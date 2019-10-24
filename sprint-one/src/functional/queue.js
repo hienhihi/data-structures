@@ -21,7 +21,7 @@ var Queue = function() {
   };
 
   someInstance.size = function() {
-    return (size-first < 0) ? 0 : Math.max(size-first);
+    return ( size - first < 0) ? 0 : Math.max( size - first);
   };
 
   return someInstance;
