@@ -4,26 +4,20 @@ var Stack = function(size) {
   var newStack = {};
   newStack.storage = {};
   newStack.storage.size = 0;
-  extend(newStack, stackMethods);
+  _.extend(newStack, stackMethods);
   return newStack;
-};
-
-var extend = function(to, from) {
-  for (var key in from) {
-    to[key] = from[key];
-  }
 };
 
 var stackMethods = {};
 
 stackMethods.push = function(value) {
-  this.storage[size] = value;
+  this.storage[this.storage.size] = value;
   this.storage.size++;
 };
 
 stackMethods.pop = function() {
-  var res = this.storage[size - 1];
-  delete this.storage[size - 1];
+  var res = this.storage[this.storage.size - 1];
+  delete this.storage[this.storage.size - 1];
   this.storage.size--;
   return res;
 };
