@@ -1,15 +1,31 @@
 var LinkedList = function() {
   var list = {};
+  var current;
   list.head = null;
   list.tail = null;
 
   list.addToTail = function(value) {
+    if (list.head === null) {
+      current = Node(value);
+      list.head = current;
+      list.tail = current;
+    }
+    current.next = Node(value);
+    current = Node(value);
+    Node.next = current;
+    list.tail = current;
   };
 
   list.removeHead = function() {
+    var res = list.head;
+    list.head = Node.next;
+    return res.value;
   };
 
   list.contains = function(target) {
+    // create variable and set to head, if var !== target, assign var to the node next to it. when we reach tail. return false
+    // reach to tail means .next === this value.
+    while ()
   };
 
   return list;
