@@ -2,7 +2,7 @@ var Tree = function(value) {
   var newTree = Object.create(treeMethods);
   newTree.value = value;
   // your code here
-  newTree.children = [];  // fix me
+  newTree.children = []; // fix me
 
   return newTree;
 };
@@ -10,7 +10,8 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  this.children.push(Node(value));
+  var child = new Tree(value);
+  this.children.push(child);
 };
 
 treeMethods.contains = function(target) {
@@ -21,31 +22,13 @@ treeMethods.contains = function(target) {
       if (this.children[i].value === target) {
         return true;
       } else if (this.children[i].children.length > 0) {
-        scanChild(this.children[i], target);
+        for (var j = 0; j < this.children[i].children.length; j++) {
+          if (this.children[i].children[j].contains(target)) {
+            return true;
+          }
+        }        
       }
     }
   }
   return false;
 };
-
-var Node = function(value) {
-  var node = {};
-  node.value = value;
-  node.children = [];
-
-  return node;
-};
-
-var scanChild = function(node, target) {
-  for (var j = 0; j < node.length; j++) {
-    if (node.value === target) {
-      return true;
-    } else if (node.children.length > 0) {
-      scanChild(node.children[j], target);
-    }
-  }
-};
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
